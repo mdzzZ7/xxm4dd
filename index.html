@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PS Madee Gamez | Premium Rental</title>
+    <style>
+        /* 1. VARIABEL & DASAR */
+        :root {
+            --primary: #00d4ff;
+            --secondary: #ff00c1;
+            --dark-bg: #050505;
+            --card-bg: #111827;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--dark-bg);
+            color: white;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth; /* Bikin scroll jadi halus */
+        }
+
+        /* 2. NAVIGASI */
+        nav {
+            background: rgba(0, 0, 0, 0.95);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        nav h2 { color: var(--primary); margin: 0; cursor: pointer; }
+
+        nav .menu { display: flex; gap: 25px; }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+            text-shadow: 0 0 10px var(--primary);
+        }
+
+        /* 3. HERO SECTION (Banner Atas) */
+        .hero {
+            height: 450px;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('https://plus.unsplash.com/premium_photo-1664110691109-65576da7243d?q=80&w=2000&auto=format&fit=crop'); 
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border-bottom: 5px solid var(--secondary);
+        }
+
+        .hero h1 { font-size: 3.5rem; margin: 0; text-shadow: 0 0 20px var(--primary); }
+        .hero p { font-size: 1.2rem; opacity: 0.9; }
+
+        /* 4. KATALOG GAME (Grid & Flexbox) */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .game-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .game-card {
+            background: var(--card-bg);
+            width: 280px;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid #334155;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .game-card:hover {
+            transform: translateY(-12px);
+            border-color: var(--primary);
+            box-shadow: 0 0 25px rgba(0, 212, 255, 0.4);
+        }
+
+        .game-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover; /* Biar gambar nggak gepeng */
+            transition: 0.5s;
+        }
+
+        .game-card:hover .game-img {
+            transform: scale(1.1); /* Efek zoom gambar */
+        }
+
+        .game-info { padding: 20px; }
+        .game-info h3 { margin-top: 0; font-size: 1.3rem; }
+
+        .status { font-size: 0.9rem; margin-bottom: 15px; }
+        .tersedia { color: #4ade80; font-weight: bold; }
+        .penuh { color: #f87171; font-weight: bold; }
+
+        .btn-action {
+            background: var(--primary);
+            color: black;
+            border: none;
+            width: 100%;
+            padding: 12px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        /* 5. KONTAK SECTION */
+        #kontak {
+            background: #0a0a0a;
+            padding: 80px 20px;
+            text-align: center;
+            border-top: 1px solid #222;
+        }
+
+        /* 6. WHATSAPP FLOATING BUTTON */
+        .wa-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25d366;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            z-index: 1000;
+            transition: 0.3s;
+        }
+
+        .wa-float:hover { transform: scale(1.1); background: #128c7e; }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #555;
+            background: #000;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <h2 onclick="location.reload()">MD Playstation's</h2>
+        <div class="menu">
+            <a href="#">Home</a>
+            <a href="#katalog">Katalog</a>
+            <a href="#kontak">Kontak</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <h1>READY TO PLAY?</h1>
+        <p>Rental PS5 & PS4 Premium dengan Koleksi Game Terbaru</p>
+    </header>
+
+    <div class="container" id="katalog">
+        <h2 style="text-align: center; margin-bottom: 40px; font-size: 2rem;">Koleksi Game Terpopuler</h2>
+        
+        <div class="game-grid">
+            <div class="game-card" onclick="pesan('GTA VI')">
+                <img src="download (1).jpg" alt="GTA VI" class="game-img">
+                <div class="game-info">
+                    <h3>GTA VI</h3>
+                    <p class="status">Status: <span class="tersedia">Tersedia</span></p>
+                    <button class="btn-action">Sewa Sekarang</button>
+                </div>
+            </div>
+
+            <div class="game-card" onclick="pesan('FC 25')">
+                <img src="fc 25.jpg" alt="FC 25" class="game-img">
+                <div class="game-info">
+                    <h3>FC 25 (FIFA)</h3>
+                    <p class="status">Status: <span class="tersedia">Tersedia</span></p>
+                    <button class="btn-action">Sewa Sekarang</button>
+                </div>
+            </div>
+
+            <div class="game-card" onclick="pesan('Spider-Man 2')">
+                <img src="sapidermen 2.jpg" alt="Spider-Man 2" class="game-img">
+                <div class="game-info">
+                    <h3>Spider-Man 2</h3>
+                    <p class="status">Status: <span class="penuh">Sedang Dimainkan</span></p>
+                    <button class="btn-action" style="background: #4b5563; color: white;">Booking Dulu</button>
+                </div>
+            </div>
+
+            <div class="game-card" onclick="pesan('Call of Duty')">
+                <img src="cod mw 2.jpg" alt="COD" class="game-img">
+                <div class="game-info">
+                    <h3>Call of Duty: MW II</h3>
+                    <p class="status">Status: <span class="tersedia">Tersedia</span></p>
+                    <button class="btn-action">Sewa Sekarang</button>
+                </div>
+            </div>
+
+            <div class="game-card" onclick="pesan('Assassins Creed')">
+                <img src="assasin mirage.jpg" alt="AC" class="game-img">
+                <div class="game-info">
+                    <h3>Assassin's Creed Mirage</h3>
+                    <p class="status">Status: <span class="penuh">Sedang Dimainkan</span></p>
+                    <button class="btn-action" style="background: #4b5563; color: white;">Booking Dulu</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="kontak">
+        <h2 style="color: var(--primary);">Hubungi Kami</h2>
+        <p>Ingin pesan unit atau tanya ketersediaan game?</p>
+        <p style="font-size: 1.5rem; font-weight: bold; margin: 20px 0;">xxxxxx</p>
+        <p>Jl. Raya Gaming No. 123, manawe, Jawa Barat</p>
+    </div>
+
+    <a href="https://wa.me/6281234567890" class="wa-float" target="_blank">
+        Chat WA Sekarang 💬
+    </a>
+
+    <footer>
+        &copy; 2026 PS Madee Gamez. Developed with ❤️ by madzZ7-web
+    </footer>
+
+    <script>
+        function pesan(namaGame) {
+            const nomorWA = "xxxxxx"; // GANTI DENGAN NOMOR WA KAMU
+            const teks = "Halo Madee Gamez, saya tertarik untuk sewa/main game: " + namaGame;
+            const url = "https://wa.me/" + nomorWA + "?text=" + encodeURIComponent(teks);
+            
+            if(confirm("Lanjut pesan " + namaGame + " via WhatsApp?")) {
+                window.open(url, '_blank');
+            }
+        }
+    </script>
+
+</body>
+</html>
